@@ -9,7 +9,7 @@ export const FirstSection = () => {
       <div className="container max-w-4xl mx-auto text-center z-10 text-white">
         <div className="space-y-6">
           <img
-            src="cringesat.jpg"
+            src="/cringesat.jpg"
             className="w-24 h-24 rounded-full mx-auto mb-6 shadow-lg border-2 border-primary opacity-0 animate-fade-in"
           />
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
