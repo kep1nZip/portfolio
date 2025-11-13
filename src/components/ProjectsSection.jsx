@@ -4,6 +4,15 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+    id: 4,
+    title: "MyKafe",
+    description: "MyKafe is a modern cafe website designed to bring the warmth and elegance of a coffee experience directly to the digital realm. Built with React, Tailwind CSS, and Framer Motion, this project prioritizes a seamless User Experience (UX) and a consistent aesthetic, with smooth and interactive animations.",
+    image: "/projects/project4.png",
+    tags: ["HTML", "CSS", "React", "vite.js"],
+    demoUrl: "https://mykafe.vercel.app/",
+    githubUrl: "https://github.com/kep1nZip/MyKafe",
+  },
+  {
     id: 1,
     title: "Simple Calculator",
     description: "My first project ever! I made this project by using HTML, CSS, and JavaScript. In this application, user can use addition ( + ), subtraction ( - ), multiplication ( * ), and division ( / ), user can also use the decimal number! I need 5 hours to made it, also glad that this project was helped by one of my friend. ",
