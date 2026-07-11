@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    id: 4,
+    id: 1,
     title: "MyKafe",
     description: "MyKafe is a modern cafe website designed to bring the warmth and elegance of a coffee experience directly to the digital realm. Built with React, Tailwind CSS, and Framer Motion, this project prioritizes a seamless User Experience (UX) and a consistent aesthetic, with smooth and interactive animations.",
     image: "/projects/project4.png",
@@ -13,7 +13,7 @@ const projects = [
     githubUrl: "https://github.com/kep1nZip/MyKafe",
   },
   {
-    id: 1,
+    id: 2,
     title: "Simple Calculator",
     description: "My first project ever! I made this project by using HTML, CSS, and JavaScript. In this application, user can use addition ( + ), subtraction ( - ), multiplication ( * ), and division ( / ), user can also use the decimal number! I need 5 hours to made it, also glad that this project was helped by one of my friend. ",
     image: "/projects/project1.png",
@@ -22,7 +22,7 @@ const projects = [
     githubUrl: "https://github.com/kep1nZip/Calculator",
   },
   {
-    id: 2,
+    id: 3,
     title: "E-Sports Tournament Data Management Application",
     description: "I made this project with my college friends by Go-Language. In this application, user can record/add, manage, and analyze data that related to e-sports tournaments.",
     image: "/projects/project2.png",
@@ -31,7 +31,7 @@ const projects = [
     githubUrl: "https://github.com/kep1nZip/tubes_alpro_2",
   },
   {
-    id: 3,
+    id: 4,
     title: "Simple Rock-Scissors-Paper Game",
     description:
       "This game features three difficulty levels: normal, medium, and hard. Scores are automatically saved by local-storage, and features include player's turn highlight, score-reset, full-screen mode, and a responsive and engaging neon-look display.",
@@ -39,6 +39,26 @@ const projects = [
     tags: ["HTML", "CSS", "Vanilla Js"],
     demoUrl: "https://simple-rock-scissors-paper.vercel.app/",
     githubUrl: "https://github.com/kep1nZip/Rock-paper-scissors",
+  },
+  {
+    id: 5,
+    title: "LeadEstate: Reminder & Follow-up Management Application",
+    description:
+      "LeadEstate is a digital assistant that bridges communication between real estate agents and prospective buyers. Operating as a central control hub, the application provides smart reminders to follow up with clients, share property updates, and maintain strong relationships. With LeadEstate, the follow-up process becomes more scheduled and personalized, ensuring no lead is ever overlooked until the final deal is closed.",
+    image: "/projects/project5.png",
+    tags: ["HTML", "CSS", "react.js", "vite.js", "java", "springboot", "azure", "microsoft sql server"],
+    demoUrl: "https://leadestate-six.vercel.app/",
+    githubUrl: "https://github.com/kep1nZip/LeadEstate",
+  },
+  {
+    id: 6,
+    title: "LeadEstate: Reminder & Follow-up Management Application (JSP version)",
+    description:
+      "The legacy version of LeadEstate, developed specifically as a final project for an Object-Oriented Programming (OOP) course. This version leverages Java Server Pages (JSP) and Servlets to implement core OOP principles—such as encapsulation and inheritance—coupled with a local XAMPP and MySQL setup for server-side data management",
+    image: "/projects/project6.jpeg",
+    tags: ["JSP", "java", "XAMPP", "mysql"],
+    demoUrl: "https://github.com/kep1nZip/LeadEstate-for-OOP-course",
+    githubUrl: "https://github.com/kep1nZip/LeadEstate-for-OOP-course",
   },
 ];
 

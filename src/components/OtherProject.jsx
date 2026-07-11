@@ -5,23 +5,23 @@ const otherProjects = [
   {
     id: 1,
     title: "Designs",
-    description: "Creative stuffs (poster, live report frame, etc) for a university event and personal (click to find more!).",
+    description: "Creative stuffs (poster, live report frame, etc) for university event and personal (click to find more!).",
     image: "/projects/poster.png",
     link: "https://www.canva.com/design/DAGdKbnIuVU/esOry9m3TrQX1MwusxK2Pg/view?utm_content=DAGdKbnIuVU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h04a28e1a0a",
   },
   {
     id: 2,
     title: "Photography",
-    description: "Some random capture of photos.",
+    description: "A collection of candid moments, street photography, and visual snippets of life.",
     image: "/projects/photography.png",
     link: "https://www.instagram.com/stories/highlights/17987235884240554/",
   },
   {
     id: 3,
     title: "UI/UX",
-    description: "[COMING SOON]",
-    image: "/projects/uiux.jpg",
-    link: "https://www.canva.com/design/DAGyK_WaMBQ/FVskgJMqUt4hO7SjERORPQ/view?utm_content=DAGyK_WaMBQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7587fbc312",
+    description: "Designing intuitive and visually engaging digital interfaces centered around user needs.",
+    image: "/projects/uiux.png",
+    link: "https://canva.link/dx439eo1uw2j9vp",
   },
 ];
 
