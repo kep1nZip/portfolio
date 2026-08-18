@@ -1,51 +1,35 @@
-import { RefreshCcw } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export const ThemeToggle = () => {
-  console.log("ThemeToggle rendered");
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isSpinning, setIsSpinning] = useState(false);
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") {
-      setIsDarkMode(true);
-      document.documentElement.classList.add("dark");
-    } else {
-      setIsDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    }
+    const dark = storedTheme === "dark";
+    setIsDarkMode(dark);
+    document.documentElement.classList.toggle("dark", dark);
   }, []);
 
   const toggleTheme = () => {
-    setIsSpinning(true);
-    setTimeout(() => setIsSpinning(false), 600);
-
-    if (isDarkMode) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-      setIsDarkMode(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-      setIsDarkMode(true);
-    }
+    const next = !isDarkMode;
+    setIsDarkMode(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
   };
 
   return (
     <button
+      type="button"
       onClick={toggleTheme}
+      aria-label={`Switch to ${isDarkMode ? "light" : "dark"} theme`}
       className={cn(
-        "p-2 rounded-full transition duration-300 focus:outline-none hover:shadow-[0_0_15px] hover:shadow-primary/100"
+        "inline-flex h-9 w-9 items-center justify-center rounded-full border border-foreground/15",
+        "text-foreground transition-all duration-300 hover:border-primary hover:text-primary"
       )}
     >
-      <RefreshCcw
-        className={cn(
-          "h-6 w-6 text-primary transition-transform duration-500",
-          isSpinning && "animate-spin"
-        )}
-      />
+      {isDarkMode ? <Sun size={17} /> : <Moon size={17} />}
     </button>
   );
 };

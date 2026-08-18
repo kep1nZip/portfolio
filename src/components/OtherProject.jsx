@@ -1,91 +1,45 @@
-import { useEffect, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const otherProjects = [
-  {
-    id: 1,
-    title: "Designs",
-    description: "Creative stuffs (poster, live report frame, etc) for university event and personal (click to find more!).",
-    image: "/projects/poster.png",
-    link: "https://www.canva.com/design/DAGdKbnIuVU/esOry9m3TrQX1MwusxK2Pg/view?utm_content=DAGdKbnIuVU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h04a28e1a0a",
-  },
-  {
-    id: 2,
-    title: "Photography",
-    description: "A collection of candid moments, street photography, and visual snippets of life.",
-    image: "/projects/photography.png",
-    link: "https://www.instagram.com/stories/highlights/17987235884240554/",
-  },
-  {
-    id: 3,
-    title: "UI/UX",
-    description: "Designing intuitive and visually engaging digital interfaces centered around user needs.",
-    image: "/projects/uiux.png",
-    link: "https://canva.link/dx439eo1uw2j9vp",
-  },
+  { title: "Designs", description: "Posters, live-report frames, and creative work for university events and personal projects.", image: "/projects/poster.png", link: "https://www.canva.com/design/DAGdKbnIuVU/esOry9m3TrQX1MwusxK2Pg/view?utm_content=DAGdKbnIuVU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h04a28e1a0a" },
+  { title: "Photography", description: "A collection of candid moments, street photography, and visual snippets of everyday life.", image: "/projects/photography.png", link: "https://www.instagram.com/stories/highlights/17987235884240554/" },
+  { title: "UI/UX", description: "Interface explorations centered on intuitive interaction and visual communication.", image: "/projects/uiux.png", link: "https://canva.link/dx439eo1uw2j9vp" },
 ];
 
-export const OtherProject = () => {
-    const [isDark, setIsDark] = useState(
-        () => document.documentElement.classList.contains("dark")
-    );
-
-    useEffect(() => {
-        const root = document.documentElement;
-        const observer = new MutationObserver(() => {
-        setIsDark(root.classList.contains("dark"));
-        });
-        observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-        return () => observer.disconnect();
-    }, []);
-
-  return (
-    <section id="other-projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl">
-        <motion.h2
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold mb-12 text-center"
-        >
-          <span className="text-primary">Other</span> {" "}
-          <span className={isDark ? "text-foreground" : "text-white"}>Projects</span>
-        </motion.h2>
-
-        <div className="grid md:grid-cols-3 gap-8">
-            {otherProjects.map((project, key) => (
-            <motion.a
-                key={key}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: key * 0.1 }}
-                viewport={{ once: true }}
-                className="group bg-card rounded-lg overflow-hidden shadow-md hover:shadow-lg 
-                            transition-all duration-300 cursor-pointer block transform hover:scale-105"
-            >
-                <div className="overflow-hidden">
-                <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                </div>
-                <div className="p-5">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                    {project.title}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                    {project.description}
-                </p>
-                </div>
-            </motion.a>
-            ))}
-        </div>
+export const OtherProject = () => (
+  <section id="other-projects" className="border-t border-foreground/10 py-24 px-4 md:py-28">
+    <div className="container">
+      <div className="mb-10">
+        <p className="section-label">04 / More</p>
+        <h2 className="mt-4 text-3xl font-bold md:text-4xl">Other things I <span className="serif text-primary">create.</span></h2>
       </div>
-    </section>
-  );
-};
+      <div className="grid gap-5 md:grid-cols-3">
+        {otherProjects.map((project, index) => (
+          <motion.a
+            key={project.title}
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.06 }}
+            className="group border border-foreground/10 bg-card card-hover"
+          >
+            <div className="overflow-hidden">
+              <img src={project.image} alt={project.title} loading="lazy" className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div className="p-6">
+              <div className="flex items-center justify-between gap-4">
+                <h3 className="text-xl font-semibold">{project.title}</h3>
+                <ArrowUpRight size={18} className="text-primary" />
+              </div>
+              <p className="mt-3 text-sm leading-6 text-foreground/60">{project.description}</p>
+            </div>
+          </motion.a>
+        ))}
+      </div>
+    </div>
+  </section>
+);

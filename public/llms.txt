@@ -1,0 +1,17 @@
+# Johanes Kevin Agustahadi Portfolio
+
+## Overview
+Portfolio website for Johanes Kevin Agustahadi, a front-end developer and UI/UX designer based in Bandung, Indonesia.
+
+## Sections
+- Home
+- About
+- Skills
+- Selected Projects
+- Other Projects
+- Contact
+
+## Primary links
+- GitHub: https://github.com/kep1nZip
+- LinkedIn: https://www.linkedin.com/in/johanes-kevin-agustahadi-0362a733a/
+- Instagram: https://www.instagram.com/kep1n.zip/

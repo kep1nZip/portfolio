@@ -1,191 +1,62 @@
-import {
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Send,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useToast } from "@/hooks/use-toast";
-import { useState, useEffect } from "react";
+import { Instagram, Linkedin, Mail, MapPin, ArrowUpRight } from "lucide-react";
 
 export const ContactSection = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isDark, setIsDark] = useState(
-    () => document.documentElement.classList.contains("dark")
-  );
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const observer = new MutationObserver(() => {
-      setIsDark(root.classList.contains("dark"));
-    });
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-      setIsSubmitting(false);
-    }, 1500);
+    const form = new FormData(e.currentTarget);
+    const subject = encodeURIComponent(`Portfolio inquiry from ${form.get("name")}`);
+    const body = encodeURIComponent(
+      `Name: ${form.get("name")}\nEmail: ${form.get("email")}\n\n${form.get("message")}`
+    );
+    window.location.href = `mailto:johaneskevina2@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          <span className={isDark ? "text-foreground" : "text-white"}>
-            Get In
-          </span>{" "}
-          <span className="text-primary">Touch</span>
-        </h2>
+    <section id="contact" className="border-t border-foreground/10 py-24 px-4 md:py-32">
+      <div className="container">
+        <div className="grid gap-14 md:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="section-label">05 / Contact</p>
+            <h2 className="mt-4 text-4xl font-bold md:text-5xl">
+              Let's work<br /><span className="serif text-primary">together.</span>
+            </h2>
+            <p className="mt-6 max-w-md leading-7 text-foreground/60">
+              Have an idea, project, or simply want to talk about technology and design? Feel free to reach out.
+            </p>
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          <span className={isDark ? "text-foreground" : "text-white"}>
-          Feel free to contact me below or through this form!
-          </span>
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">
-              <span className={isDark ? "text-foreground" : "text-white"}>
-              {" "}
-              Contact Information
-              </span>
-            </h3>
-
-            <div className="space-y-6 justify-center">
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />{" "}
-                </div>
-                <div>
-                  <span className={isDark ? "text-foreground" : "text-white"}>
-                  <h4 className="font-medium"> Email</h4>
-                  <a
-                    href="mailto:johaneskevina2@gmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    johaneskevina2@gmail.com
-                  </a>
-                  </span>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />{" "}
-                </div>
-                <div>
-                  <span className={isDark ? "text-foreground" : "text-white"}>
-                  <h4 className="font-medium"> Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Bandung, Jawa Barat, Indonesia
-                  </a>
-                  </span>
-                </div>
+            <div className="mt-10 space-y-5 text-sm">
+              <a href="mailto:johaneskevina2@gmail.com" className="flex items-center gap-4 hover:text-primary">
+                <Mail size={18} /> johaneskevina2@gmail.com
+              </a>
+              <div className="flex items-center gap-4 text-foreground/70">
+                <MapPin size={18} /> Bandung, Jawa Barat, Indonesia
               </div>
             </div>
 
-            <div className="pt-8">
-              <span className={isDark ? "text-foreground" : "text-white"}>
-              <h4 className="font-medium mb-4"> Connect With Me!</h4>
-              </span>
-              <div className="flex space-x-4 justify-center">
-                <span className={isDark ? "text-foreground" : "text-white"}>
-                <a href="https://www.linkedin.com/in/johanes-kevin-agustahadi-0362a733a/" target="_blank">
-                  <Linkedin />
-                </a>
-                </span>
-
-                <span className={isDark ? "text-foreground" : "text-white"}>
-                <a href="https://www.instagram.com/kep1n.zip/" target="_blank">
-                  <Instagram />
-                </a>
-                </span>
-              </div>
+            <div className="mt-8 flex gap-5">
+              <a href="https://www.linkedin.com/in/johanes-kevin-agustahadi-0362a733a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary"><Linkedin size={20} /></a>
+              <a href="https://www.instagram.com/kep1n.zip/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-primary"><Instagram size={20} /></a>
             </div>
           </div>
 
-          <div
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
-          >
-            <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
-
-            <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="border border-foreground/10 bg-card p-6 md:p-9">
+            <div className="grid gap-6">
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {" "}
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="Jane Doe, John Doe..."
-                />
+                <label htmlFor="name" className="mb-2 block text-sm font-medium">Your Name</label>
+                <input id="name" name="name" required className="w-full border border-foreground/15 bg-background px-4 py-3 outline-none transition-colors focus:border-primary" placeholder="Your name" />
               </div>
-
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {" "}
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="thisisanemail@gmail.com"
-                />
+                <label htmlFor="email" className="mb-2 block text-sm font-medium">Your Email</label>
+                <input id="email" name="email" type="email" required className="w-full border border-foreground/15 bg-background px-4 py-3 outline-none transition-colors focus:border-primary" placeholder="you@example.com" />
               </div>
-
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {" "}
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
-                  placeholder="Hello, I'd like to talk about..."
-                />
+                <label htmlFor="message" className="mb-2 block text-sm font-medium">Your Message</label>
+                <textarea id="message" name="message" required rows="6" className="w-full resize-none border border-foreground/15 bg-background px-4 py-3 outline-none transition-colors focus:border-primary" placeholder="Tell me about your project..." />
               </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
-                )}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-                <Send size={16} />
-              </button>
-            </form>
-          </div>
+              <button type="submit" className="primary-button w-full">Send Message <ArrowUpRight size={16} /></button>
+              <p className="text-xs text-foreground/45">Submitting opens your default email application.</p>
+            </div>
+          </form>
         </div>
       </div>
     </section>

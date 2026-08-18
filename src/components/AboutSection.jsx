@@ -1,78 +1,40 @@
-import { useEffect, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 
-export const AboutSection = () => {
-  const [isDark, setIsDark] = useState(
-    () => document.documentElement.classList.contains("dark")
-  );
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const observer = new MutationObserver(() => {
-      const darkNow = root.classList.contains("dark");
-      setIsDark(darkNow);
-    });
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <section id="about" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl">
-        {/* Judul */}
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center ">
-          <span className={isDark ? "text-foreground" : "text-white"}>
-            About
-          </span>{" "}
-          <span className="text-primary">Me</span>
-        </h2>
-
-        {/* Card */}
-        <div
-          className="
-            group bg-white dark:bg-card rounded-2xl shadow-lg p-8 md:p-12
-            transition-all duration-300 transform hover:scale-105
-          "
-        >
-          <div className="space-y-6">
-            <h3
-              className={`
-                relative text-2xl font-semibold inline-block 
-                after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 
-                after:transition-all after:duration-500 after:origin-left
-                group-hover:after:w-full
-                ${isDark ? "after:bg-white" : "after:bg-black"}
-              `}
-            >
-              Passionate Web Developer
-            </h3>
-
-            <p className="text-muted-foreground text-justify">
-              After graduating from Yos Sudarso Karawang High School, I decided
-              to learn programming, and my first programming language was C++. I
-              also discovered programming-related content on social media and
-              finally found my interests, which were Front-end and UI/UX Design
-              because I like designing and managing a lot of code! Sometimes I
-              also like to share my code on GitHub, so feel free to Connect or
-              Follow me on my Github where I post something about Programming
-              (some of for fun, for sure).
-            </p>
-
-            <p className="text-muted-foreground text-justify">
-              In 2024, I decided to continue my study at Telkom University
-              Bandung with major in Informatics/Computer Science. Also, feel
-              free to contact me via Instagram or Gmail, we can have chit-chat
-              about some hobbies like tech, computer, programming, design,
-              automotive, or even gaming related :D
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
-                Get In Touch
-              </a>
-            </div>
-          </div>
+export const AboutSection = () => (
+  <section id="about" className="border-t border-foreground/10 py-24 px-4 md:py-32">
+    <div className="container">
+      <div className="grid gap-12 md:grid-cols-[0.35fr_0.65fr]">
+        <div>
+          <p className="section-label">01 / About</p>
+          <h2 className="mt-4 text-4xl font-bold md:text-5xl">A little<br /><span className="serif font-semibold text-primary">about me.</span></h2>
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-3xl border-l border-foreground/15 pl-6 md:pl-10"
+        >
+          <h3 className="text-2xl font-semibold">Passionate Web Developer</h3>
+          <div className="mt-6 space-y-5 text-foreground/65 leading-7">
+            <p>
+              After graduating from Yos Sudarso Karawang High School, I started
+              learning programming with C++. Over time, I found my interests in
+              front-end development and UI/UX design—where visual thinking and
+              code come together.
+            </p>
+            <p>
+              In 2024, I continued my studies in Informatics at Telkom University
+              Bandung. I enjoy building interfaces, experimenting with ideas, and
+              sharing programming projects on GitHub. I am always open to
+              conversations around technology, design, automotive, and gaming.
+            </p>
+          </div>
+          <a href="#contact" className="mt-8 inline-flex items-center gap-2 font-medium text-primary hover:underline">
+            Get in touch <ArrowUpRight size={16} />
+          </a>
+        </motion.div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
