@@ -34,8 +34,7 @@ export const FirstSection = () => {
               transition={{ duration: 0.7, delay: 0.18 }}
               className="mt-7 max-w-2xl text-base leading-7 text-foreground/65 md:text-lg"
             >
-              I design and build responsive digital experiences with a focus on
-              clarity, interaction, and thoughtful visual details.
+              I build responsive and user-focused web experiences using React, Tailwind CSS, and modern web technologies.
             </motion.p>
 
             <motion.div
@@ -45,7 +44,7 @@ export const FirstSection = () => {
               className="mt-9 flex flex-wrap gap-3"
             >
               <a href="#projects" className="primary-button">
-                View My Work <ArrowRight size={16} />
+                Explore Projects <ArrowRight size={16} />
               </a>
               <a
                 href="https://drive.google.com/drive/folders/1uXFwMZVTc7arGYr_47ka7uyx6ny2LGrE?usp=sharing"
@@ -55,7 +54,7 @@ export const FirstSection = () => {
               >
                 Download CV
               </a>
-            </motion.div>
+            </motion.div><div className="mt-10 grid max-w-2xl grid-cols-3 gap-3 text-center"><div className="border border-border bg-card p-4"><div className="text-2xl font-bold">11+</div><div className="text-xs text-foreground/60">Skills</div></div><div className="border border-border bg-card p-4"><div className="text-2xl font-bold">6+</div><div className="text-xs text-foreground/60">Projects</div></div><div className="border border-border bg-card p-4"><div className="text-2xl font-bold">100%</div><div className="text-xs text-foreground/60">Responsive</div></div></div>
           </div>
 
           <motion.div
